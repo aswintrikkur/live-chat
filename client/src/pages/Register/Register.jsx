@@ -43,6 +43,7 @@ export function Register() {
 					onChange={handleChange}
 					name="username"
 					value={data.username}
+					autoComplete="off"
 				/>
 				<label className="form-label" for="form2Example1">
 					User Name
@@ -58,6 +59,7 @@ export function Register() {
 					onChange={handleChange}
 					name="email"
 					value={data.email}
+					autoComplete="off"
 				/>
 				<label className="form-label" for="form2Example1">
 					Email address
@@ -72,6 +74,7 @@ export function Register() {
 					onChange={handleChange}
 					name="mobile"
 					value={data.mobile}
+					autoComplete="off"
 				/>
 				<label className="form-label" for="form2Example1">
 					Mobile
@@ -87,6 +90,7 @@ export function Register() {
 					onChange={handleChange}
 					name="password"
 					value={data.password}
+					autoComplete="off"
 				/>
 				<label className="form-label" for="form2Example2">
 					Password

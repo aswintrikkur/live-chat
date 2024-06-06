@@ -3,9 +3,10 @@ import "./Home.scss";
 import axios from "axios";
 import { API } from "../../API";
 import { UserContext } from "../../userContext";
+import { ChatList } from "../../components/ChatList/ChatList";
 
 export const Home = () => {
-	const { userData, setUserData, allUsers, fetchAllUsers } = useContext(UserContext);
+	const { userData, setUserData, allUsers, fetchAllUsers, secondPerson } = useContext(UserContext);
 	console.log(userData, "=========userData--------");
 
 	console.log("all users=======", allUsers);
@@ -57,34 +58,45 @@ export const Home = () => {
 		<div className="home-container">
 			<h2>Welcome {userData?.username} </h2>
 			<div className="main-content">
-				<div className="chat-area">
-					<div className="left">
-						{allUsers[0].chat.map((data, index) => (
-							<>
-								<p key={index}> User : {data} </p>
-								<br />
-							</>
-						))}
-					</div>
-					<div className="right">
-						{/* {yourChat?.map((data, index) => (
-							<>
-								<p key={index}> YOU: {data} </p>
-								<br />
-							</>
-						))} */}
-						{allUsers[1].chat.map((data, index) => (
-							<>
-								<p key={index}> YOU: {data} </p>
-								<br />
-							</>
-						))}
-					</div>
+				<div className="col1">
+					<ChatList />
 				</div>
+				<div className="col2 chat">
+					<div className="chat-head">
+						<img src="/images/profile.svg" alt="pic" />
+						<h4>{secondPerson?.username}</h4>
+						<button onClick={fetchAllUsers} >Refresh</button>
+					</div>
 
-				<div className="input-bar">
-					<input type="text" placeholder="Enter message" name="you" value={message} onChange={handleChange} />
-					<button onClick={handleSend}>Send</button>
+					<div className="chat-area">
+						<div className="left">
+						{secondPerson?.chat?.map((data, index) => (
+								<div key={index}>
+									<p>{data}</p>
+									<br />
+								</div>
+							))}
+						</div>
+						<div className="right">
+							{userData?.chat?.map((data, index) => (
+								<div key={index}>
+									<p>{data}</p>
+									<br />
+								</div>
+							))}
+						</div>
+					</div>
+
+					<div className="input-bar">
+						<input
+							type="text"
+							placeholder="Enter message"
+							name="you"
+							value={message}
+							onChange={handleChange}
+						/>
+						<button onClick={handleSend}>Send</button>
+					</div>
 				</div>
 			</div>
 		</div>

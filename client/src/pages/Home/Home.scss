@@ -1,57 +1,123 @@
-.home-container{
-    width: 100vw;
+.home-container {
 
-    >h2{
-        text-transform: uppercase;
-    }
+    background-color: rgb(50, 107, 84);
+	width: 100vw;
+    height: 100vh;
+	> h2 {
+        text-transform: capitalize;
+        padding: 20px;
+        color: rgb(231, 224, 224)
+	}
 
+	.main-content {
+		color: rgb(231, 224, 224);
+		height: 85%;
+		display: flex;
 
-    .main-content{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        
-        
-        .chat-area{
-            width: 90%;
-            height: 75vh;
-            margin: 30px 0;
-            // background-color: rgb(148, 180, 180,.5);
-            display: flex;
+		.col1 {
+			flex: 1;
+			background-color: rgb(50, 71, 50);
+            background-color: rgb(21, 63, 57);
+            border: 1px solid rgba(0, 0, 0, 0.466);
+		}
 
+		.col2 {
+			background-color: rgb(65, 139, 109);
+			flex: 3;
+            
+			padding: 10px;
 
-            .left{
-                flex: 1;
-                background-color: rgb(105, 105, 155);
-                padding: 0 30px;
-                
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+            .chat-head{
+                padding: 20px;
+                display: flex;
+                background-color: rgb(30, 88, 79);
+                gap: 30px;
+                h4{
+                    // font-size: ;
+                    text-transform: capitalize;
+                }
+
+				button{
+					margin-left: 50%;
+
+					border-radius: 15px;
+					padding: 3px 5px;
+					outline: none;
+					// border: none;
+				}
             }
-            .right{
-                padding: 0 30px;
-                flex: 1;
-                background-color: rgb(141, 74, 74);
-                text-align: end;
-            }
-        }
+			
+			
+			.chat-area{
+				display: flex;
+				width: 100%;
 
-        .input-bar{
+				p{
+					width: fit-content;
+					padding: 5px 20px;
+					border-radius: 20px 0px 20px 10px;
+					font-size: 16px;
+					font-weight: 600;
+					background-color: whitesmoke;
+					color: rgb(41, 38, 38);
+				}
 
-            input{
+				.left{
+					
+					flex: 1;
+					// background-color: green;
+					text-align: left;
+					padding-left: 10px;
 
-                width: 700px;
-                height: 50px;
-                font-size: 25px;
-            }
-            button{
-                height: 50px;
-                font-size: 25px;
-                width: 100px;
-            }
+					p{
 
-        }
+						border-radius: 0px 20px 20px 20px;
+					}
+				}
+				.right{
+					text-align: right;
+					// display: flex;
+					padding-right: 10px;
+					flex: 1;
+					// background-color: red;
 
-        
-    }
+					display: flex;
+					flex-direction: column;
+					align-items: end;
+					justify-content: end;
+	
+				}
+	
+
+			}
+
+			.input-bar {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				input {
+					width: 80%;
+					height: 50px;
+					font-size: 22px;
+					padding-left: 20px;
+                    border-radius: 5px;
+                    border: none;
+                    outline: none;
+				}
+				button {
+					height: 50px;
+					font-size: 22px;
+					border: none;
+					border-radius: 10px;
+					width: 100px;
+                    font-weight: 700;
+                    color: rgb(20, 61, 55);
+				}
+			}
+		}
+	}
 }
