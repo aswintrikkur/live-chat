@@ -15,12 +15,11 @@ export const Home = () => {
 		fetchSecondPerson,
 		roomDetails,
 		setRoomDetails,
+		logOutUser,
 	} = useContext(UserContext);
-
 
 	const [message, setMessage] = useState("");
 	const chatAreaRef = useRef(null);
-
 
 	const handleChange = (e) => {
 		setMessage(e.target.value);
@@ -34,6 +33,7 @@ export const Home = () => {
 			});
 			// console.log(response.data,'===========refresh');
 			setRoomDetails(response?.data?.roomDetails);
+			fetchAllUsers();
 		} catch (error) {
 			console.log(error);
 		}
@@ -52,7 +52,6 @@ export const Home = () => {
 		}
 	};
 
-
 	useEffect(() => {
 		const refreshTimer = setInterval(() => {
 			// refreshChat();
@@ -68,14 +67,17 @@ export const Home = () => {
 	}, []);
 
 	useEffect(() => {
-        if (chatAreaRef.current) {
-            chatAreaRef.current.scrollTop = chatAreaRef.current.scrollHeight;
-        }
-    }, [message, roomDetails]);
+		if (chatAreaRef.current) {
+			chatAreaRef.current.scrollTop = chatAreaRef.current.scrollHeight;
+		}
+	}, [message, roomDetails]);
 
 	return (
 		<div className="home-container">
-			<h2>Welcome {userData?.username} </h2>
+			<div className="d-flex align-items-sm-center">
+				<h2>Welcome {userData?.username} </h2>
+				<button onClick={logOutUser} className="logout mx-5" >Log Out</button>
+			</div>
 			<div className="main-content">
 				<div className="col1">
 					<ChatList />
@@ -114,6 +116,7 @@ export const Home = () => {
 									name="message"
 									value={message}
 									onChange={handleChange}
+									autoComplete="off"
 								/>
 								<button onClick={handleSend}>Send</button>
 							</div>

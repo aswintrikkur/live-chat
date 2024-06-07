@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { API } from "./API";
 
 export const UserContext = createContext();
@@ -9,8 +9,9 @@ export const UserProvider = ({ children }) => {
 	const [userData, setUserData] = useState({});
 	const [allUsers, setAllUsers] = useState([]);
 	const [secondPerson, setSecondPerson] = useState({});
-	const [roomDetails, setRoomDetails] = useState("");
+	const [roomDetails, setRoomDetails] = useState({});
 
+	const navigate = useNavigate();
 
 	// console.log("allUsers-----------", allUsers);
 	// console.log("userData-----------", userData);
@@ -18,13 +19,11 @@ export const UserProvider = ({ children }) => {
 	// // console.log("roomDetails----------", roomDetails);
 	// console.log('=============================================');
 
-
 	const fetchSecondPerson = (id) => {
 		const fetchedData = allUsers.find((data) => data._id == id);
 		setSecondPerson(fetchedData);
 	};
 
-	
 	const fetchAllUsers = async () => {
 		try {
 			const response = await axios(`${API}/api/user/all`, {
@@ -38,12 +37,29 @@ export const UserProvider = ({ children }) => {
 		}
 	};
 
-
+	const logOutUser = () => {
+		localStorage.clear();
+		setAllUsers([]);
+		setUserData({});
+		setSecondPerson({});
+		setRoomDetails({})
+		navigate("/");
+	};
 
 	return (
 		<UserContext.Provider
-			value={{ userData, setUserData, allUsers, setAllUsers, fetchAllUsers, secondPerson, 
-				fetchSecondPerson , roomDetails, setRoomDetails}}
+			value={{
+				userData,
+				setUserData,
+				allUsers,
+				setAllUsers,
+				fetchAllUsers,
+				secondPerson,
+				fetchSecondPerson,
+				roomDetails,
+				setRoomDetails,
+				logOutUser
+			}}
 		>
 			{children}
 		</UserContext.Provider>
