@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 
+
+
 const userSchema = new mongoose.Schema({
     username: { type: String, unique: true },
     email: { type: String, unique: true, require: true },
     mobile: { type: Number, unique: true, require: true },
     password: { type: String, require: true },
-    chat:{type:[]}
+    chatRoom: { type: [new mongoose.Schema({ roomId: String })] }
 
 })
 

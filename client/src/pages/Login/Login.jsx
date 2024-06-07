@@ -27,8 +27,8 @@ export function Login() {
 				method: "POST",
 				data,
 			});
-			localStorage.setItem('userId',response.data.userData._id);
-			setUserData(response.data.userData);
+			localStorage.setItem('userId',response?.data?.userData?._id);
+			setUserData(response?.data?.userData);
 			navigate("/home");
 			console.log(response);
 		} catch (error) {

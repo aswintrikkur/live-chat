@@ -45,7 +45,7 @@ export function Register() {
 					value={data.username}
 					autoComplete="off"
 				/>
-				<label className="form-label" for="form2Example1">
+				<label className="form-label" htmlFor="form2Example1">
 					User Name
 				</label>
 			</div>
@@ -61,7 +61,7 @@ export function Register() {
 					value={data.email}
 					autoComplete="off"
 				/>
-				<label className="form-label" for="form2Example1">
+				<label className="form-label" htmlFor="form2Example1">
 					Email address
 				</label>
 			</div>
@@ -76,7 +76,7 @@ export function Register() {
 					value={data.mobile}
 					autoComplete="off"
 				/>
-				<label className="form-label" for="form2Example1">
+				<label className="form-label" htmlFor="form2Example1">
 					Mobile
 				</label>
 			</div>
@@ -92,7 +92,7 @@ export function Register() {
 					value={data.password}
 					autoComplete="off"
 				/>
-				<label className="form-label" for="form2Example2">
+				<label className="form-label" htmlFor="form2Example2">
 					Password
 				</label>
 			</div>
@@ -108,7 +108,7 @@ export function Register() {
 				Register
 			</button>
 
-			<p onClick={()=>navigate('/')}>existing user</p>
+			<p onClick={() => navigate("/")}>existing user</p>
 		</div>
-	)
+	);
 }

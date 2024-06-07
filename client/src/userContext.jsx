@@ -9,11 +9,22 @@ export const UserProvider = ({ children }) => {
 	const [userData, setUserData] = useState({});
 	const [allUsers, setAllUsers] = useState([]);
 	const [secondPerson, setSecondPerson] = useState({});
+	const [roomDetails, setRoomDetails] = useState("");
 
-	const fetchSecondPerson = (data) => {
-		setSecondPerson(data);
+
+	// console.log("allUsers-----------", allUsers);
+	// console.log("userData-----------", userData);
+	// console.log("secondPerson----------", secondPerson);
+	// // console.log("roomDetails----------", roomDetails);
+	// console.log('=============================================');
+
+
+	const fetchSecondPerson = (id) => {
+		const fetchedData = allUsers.find((data) => data._id == id);
+		setSecondPerson(fetchedData);
 	};
 
+	
 	const fetchAllUsers = async () => {
 		try {
 			const response = await axios(`${API}/api/user/all`, {
@@ -27,11 +38,12 @@ export const UserProvider = ({ children }) => {
 		}
 	};
 
-	console.log("userData==============", userData);
+
 
 	return (
 		<UserContext.Provider
-			value={{ userData, setUserData, allUsers, setAllUsers, fetchAllUsers, secondPerson, fetchSecondPerson }}
+			value={{ userData, setUserData, allUsers, setAllUsers, fetchAllUsers, secondPerson, 
+				fetchSecondPerson , roomDetails, setRoomDetails}}
 		>
 			{children}
 		</UserContext.Provider>
